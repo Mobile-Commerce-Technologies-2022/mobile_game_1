@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="welcome">Welcome to Yuxiao Song and Zhengliang Wang\'s Game</string>
+    <string name="quizGameDescription">You will be given five multiple choice questions</string>
+    <string name="logo_description">University of Ottawa</string>
+    <string name="btn_next">Next</string>
 </resources>
