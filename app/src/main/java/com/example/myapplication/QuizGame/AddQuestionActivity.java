@@ -6,14 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
 
-public class QuizGameActivity extends AppCompatActivity {
-
-    @Override
+public class AddQuestionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.quiz_game);
+        setContentView(R.layout.quiz_add_question);
 
 
     }
-
 }

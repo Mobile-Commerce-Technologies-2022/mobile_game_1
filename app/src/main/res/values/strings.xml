@@ -2,7 +2,6 @@
     <string name="app_name">My Application</string>
 <!--    String values for Main Activity-->
     <string name="welcome">Welcome to Yuxiao Song and Zhengliang Wang\'s Game</string>
-    <string name="quizGameDescription">You will be given five multiple choice questions</string>
     <string name="logo_description">University of Ottawa</string>
     <string name="btn_next">Next</string>
 
@@ -10,4 +9,10 @@
     <string name="btn_quizGame">Quiz Game</string>
     <string name="btn_countSheep">Counting Game</string>
     <string name="btn_showScore">Show Score</string>
+
+<!--    String values for Quiz Game-->
+    <string name="title_quiz">Quiz Game</string>
+    <string name="quizGameDescription">You will be given 5 multiple choice questions</string>
+    <string name="btn_addQuestion">Add Question</string>
+    <string name="btn_startQuiz">Start Quiz</string>
 </resources>
