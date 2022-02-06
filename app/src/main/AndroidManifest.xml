@@ -27,6 +27,14 @@
 
         </activity>
 
+        <activity android:name=".QuizGame.QuizGameActivity">
+
+        </activity>
+
+        <activity android:name=".QuizGame.AddQuestionActivity">
+
+        </activity>
+
         <activity android:name=".CountSheep.CountSheepActivity">
 
         </activity>

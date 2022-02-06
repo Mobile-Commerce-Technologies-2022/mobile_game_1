@@ -15,4 +15,25 @@
     <string name="quizGameDescription">You will be given 5 multiple choice questions</string>
     <string name="btn_addQuestion">Add Question</string>
     <string name="btn_startQuiz">Start Quiz</string>
+    <string name="btn_submit">Submit</string>
+
+    <string-array name="q1">
+        <item>Who is the antagonist in the Avengers: Infinity war?</item>
+        <item>Iron man</item>
+        <item>Thanos</item>
+        <item>Scarlet Witch</item>
+        <item>Ultron</item>
+        <item>Thanos</item>
+    </string-array>
+
+    <string-array name="q2">
+        <item>Who is the captain in the Pirates of the Caribbean?</item>
+        <item>Will Turner</item>
+        <item>Elizabeth Swann</item>
+        <item>Hector Barbossa</item>
+        <item>Jack Sparrow</item>
+        <item>Jack Sparrow</item>
+    </string-array>
+
+
 </resources>
