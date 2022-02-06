@@ -23,35 +23,47 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class QuizGameActivity extends AppCompatActivity {
 
     private List<QuizQuestion> questionList = null;
+    private List<String> userAnswers = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.quiz_game);
 
         this.questionList = loadQuestions();
+        this.userAnswers = new ArrayList<>();
 
-        List<String> userAnswers = new ArrayList<>();
-
-        setQuestion(0);
-
+        Collections.shuffle(questionList);
+        AtomicInteger pos = new AtomicInteger(0);
+        setQuestion(pos.getAndIncrement());
         Button submit = findViewById(R.id.btnSubmit);
         submit.setOnClickListener((View view) -> {
-            String selected = "";
-            RadioGroup options =  findViewById(R.id.rgOptions);
-            int selectedId = options.getCheckedRadioButtonId();
-            RadioButton rb = findViewById(selectedId);
-            selected = (String) rb.getText();
-            userAnswers.add(selected);
+            if(pos.get() == 5) { // go to score page
+                Toast.makeText(this, "GO TO SCORE PAGE", Toast.LENGTH_SHORT).show();
+            } else {
+                String selected = "";
+                RadioGroup options = findViewById(R.id.rgOptions);
+                int selectedId = options.getCheckedRadioButtonId();
+                RadioButton rb = findViewById(selectedId);
+                selected = (String) rb.getText();
+                userAnswers.add(selected);
 
-            setQuestion(1);
+                Toast.makeText(this, selected, Toast.LENGTH_SHORT).show();
+
+                setQuestion(pos.getAndIncrement());
+            }
         });
     }
-    
+
 
     /**
      * TODO: use AWS database to fetch questions
@@ -80,6 +92,39 @@ public class QuizGameActivity extends AppCompatActivity {
                         add(q2[4]);
                     }
                 }, q2[5]));
+
+        String[] q3 = getResources().getStringArray(R.array.q3);
+        questionList.add(new QuizQuestion(q3[0],
+                new ArrayList<String>(){
+                    {
+                        add(q3[1]);
+                        add(q3[2]);
+                        add(q3[3]);
+                        add(q3[4]);
+                    }
+                }, q3[5]));
+
+        String[] q4 = getResources().getStringArray(R.array.q4);
+        questionList.add(new QuizQuestion(q4[0],
+                new ArrayList<String>(){
+                    {
+                        add(q4[1]);
+                        add(q4[2]);
+                        add(q4[3]);
+                        add(q4[4]);
+                    }
+                }, q4[5]));
+
+        String[] q5 = getResources().getStringArray(R.array.q5);
+        questionList.add(new QuizQuestion(q5[0],
+                new ArrayList<String>(){
+                    {
+                        add(q5[1]);
+                        add(q5[2]);
+                        add(q5[3]);
+                        add(q5[4]);
+                    }
+                }, q5[5]));
 
         return questionList;
     }

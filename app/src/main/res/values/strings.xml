@@ -35,5 +35,31 @@
         <item>Jack Sparrow</item>
     </string-array>
 
+    <string-array name="q3">
+        <item>Question 3</item>
+        <item>A3</item>
+        <item>B3</item>
+        <item>C3</item>
+        <item>D3</item>
+        <item>C3</item>
+    </string-array>
+
+    <string-array name="q4">
+        <item>Question 4</item>
+        <item>A4</item>
+        <item>B4</item>
+        <item>C4</item>
+        <item>D4</item>
+        <item>A4</item>
+    </string-array>
+
+    <string-array name="q5">
+        <item>Question 5</item>
+        <item>A5</item>
+        <item>B5</item>
+        <item>C5</item>
+        <item>D5</item>
+        <item>B5</item>
+    </string-array>
 
 </resources>
