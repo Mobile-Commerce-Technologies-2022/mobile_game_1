@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.CountSheep.CountSheepActivity;
 import com.example.myapplication.QuizGame.QuizGameMenuActivity;
+import com.example.myapplication.Singleton.MyHelper;
 
 public class GameMenuActivity extends AppCompatActivity {
     @Override
