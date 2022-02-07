@@ -3,15 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:id="@+id/container">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="166dp"
-        android:layout_height="150dp"
-        android:text="Game B placeholder"
+    <Button
+        android:id="@+id/btnStartCounting"
+        android:layout_width="257dp"
+        android:layout_height="48dp"
+        android:backgroundTint="@color/primary"
+        android:bottomLeftRadius="8dp"
+        android:bottomRightRadius="8dp"
+        android:topLeftRadius="8dp"
+        android:topRightRadius="8dp"
+        android:layout_x="140dp"
+        android:layout_y="276dp"
+        android:text="Start"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
