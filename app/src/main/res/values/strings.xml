@@ -36,30 +36,48 @@
     </string-array>
 
     <string-array name="q3">
-        <item>Question 3</item>
-        <item>A3</item>
-        <item>B3</item>
-        <item>C3</item>
-        <item>D3</item>
-        <item>C3</item>
+        <item>The code in The Matrix comes from what food recipes?</item>
+        <item>Sushi recipes</item>
+        <item>Dumpling recipes</item>
+        <item>Stir-fry recipes</item>
+        <item>Pad thai recipes</item>
+        <item>Sushi recipes</item>
     </string-array>
 
     <string-array name="q4">
-        <item>Question 4</item>
-        <item>A4</item>
-        <item>B4</item>
-        <item>C4</item>
-        <item>D4</item>
-        <item>A4</item>
+        <item>Who actually drew the sketch of Rose in Titanic?</item>
+        <item>Leonardo DiCaprio</item>
+        <item>Billy Zane</item>
+        <item>James Cameron</item>
+        <item>Kathy Bates</item>
+        <item>James Cameron</item>
     </string-array>
 
     <string-array name="q5">
-        <item>Question 5</item>
-        <item>A5</item>
-        <item>B5</item>
-        <item>C5</item>
-        <item>D5</item>
-        <item>B5</item>
+        <item>Where were The Lord of the Rings movies filmed?</item>
+        <item>Ireland</item>
+        <item>Iceland</item>
+        <item>New Zealand</item>
+        <item>Australia</item>
+        <item>New Zealand</item>
+    </string-array>
+
+    <string-array name="q6">
+        <item>Who did the cat in The Godfather belong to?</item>
+        <item>Francis Ford Coppola</item>
+        <item>Diane Keaton</item>
+        <item>Al Pachino</item>
+        <item>No one—the cat was a stray</item>
+        <item>No one—the cat was a stray</item>
+    </string-array>
+
+    <string-array name="q7">
+        <item>What item is in every Fight Club scene?</item>
+        <item>A Coca-Cola can</item>
+        <item>A Starbucks cup</item>
+        <item>A Dunkin’ donut</item>
+        <item>A Pepsi bottle</item>
+        <item>A Starbucks cup</item>
     </string-array>
 
 </resources>

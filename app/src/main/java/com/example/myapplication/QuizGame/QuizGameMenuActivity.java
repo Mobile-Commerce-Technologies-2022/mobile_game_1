@@ -6,10 +6,8 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapplication.MyHelper;
+import com.example.myapplication.Singleton.MyHelper;
 import com.example.myapplication.R;
-
-import java.util.List;
 
 public class QuizGameMenuActivity extends AppCompatActivity {
 
