@@ -7,8 +7,8 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.CountSheep.CountSheepActivity;
-import com.example.myapplication.QuizGame.QuizGameActivity;
-import com.example.myapplication.R;
+import com.example.myapplication.QuizGame.QuizGameMenuActivity;
+import com.example.myapplication.Singleton.MyHelper;
 
 public class GameMenuActivity extends AppCompatActivity {
     @Override
@@ -18,7 +18,7 @@ public class GameMenuActivity extends AppCompatActivity {
 
         Button btnQuizGame = findViewById(R.id.btnQuizGame);
         btnQuizGame.setOnClickListener((View view) ->
-                MyHelper.getInstance().go2Activity(this, QuizGameActivity.class));
+                MyHelper.getInstance().go2Activity(this, QuizGameMenuActivity.class));
 
         Button btnCountSheep = findViewById(R.id.btnCountSheep);
         btnCountSheep.setOnClickListener((View view) ->
