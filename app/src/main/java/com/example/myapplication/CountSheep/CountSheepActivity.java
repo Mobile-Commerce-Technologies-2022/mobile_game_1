@@ -26,7 +26,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class CountSheepActivity extends AppCompatActivity {
 
-    private static volatile List<Integer> imageList = new ArrayList<>();;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +39,7 @@ public class CountSheepActivity extends AppCompatActivity {
 
         final ConstraintLayout constraintLayout = findViewById(R.id.container);
 
+        List<Integer> imageList = new ArrayList<>();;
         final int NUM_IMAGE_VIEWS = 70;
         for(int i = 0; i < NUM_IMAGE_VIEWS; i++) {
             imageList.add(R.drawable.sheep);
@@ -66,14 +66,15 @@ public class CountSheepActivity extends AppCompatActivity {
         Runnable runnable = new Runnable() {
             int i = 0; // counter of current imageView position
             public void run() {
-                if(i < imageList.size() && timeCountDown.get() > 0) {
+                int delay = (int)(Math.random() * 2000) + 1000;
+                if(i < imageList.size() && timeCountDown.get() > delay) {
                     //create a new ImageView object
                     ImageView imageView = new ImageView(getApplicationContext());
                     imageView.setImageResource(imageList.get(i));
                     imageView.setId(View.generateViewId());
 
                     addSheep(width, height, imageView, constraintLayout);
-                    int delay = (int)(Math.random()*2000) + 1000;
+
                     handler.postDelayed(this, delay);
 
                     handler.postDelayed(() -> {

@@ -1,8 +1,11 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -27,6 +30,13 @@ public class GameMenuActivity extends AppCompatActivity {
         Button btnShowScore = findViewById(R.id.btnShowScore);
         btnShowScore.setOnClickListener((View view) -> {
             // display pop up window
+            Intent intent = getIntent();
+            if(intent != null && intent.getExtras() != null) {
+                Bundle bundle = intent.getExtras();
+                double countingScore = bundle.getDouble("COUNTING_SCORE");
+                Log.i("COUNTING_SCORE", String.valueOf(countingScore));
+                Toast.makeText(this,String.valueOf(countingScore), Toast.LENGTH_LONG).show();
+            }
         });
     }
 
