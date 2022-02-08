@@ -102,8 +102,8 @@ public class CountSheepActivity extends AppCompatActivity {
 
             private void addSheep(int width, int height, ImageView imageView, ConstraintLayout constraintLayout) {
                 // equivalent to android:layout_width and android:layout_height
-                ConstraintLayout.LayoutParams params = new ConstraintLayout.LayoutParams((int)(Math.random() * width),
-                        (int)(Math.random() * height));
+                ConstraintLayout.LayoutParams params = new ConstraintLayout.LayoutParams(100+(int)(Math.random() * width),
+                        100+(int)(Math.random() * height));
 
                 // Add layout parameters to ImageView
                 imageView.setLayoutParams(params);
