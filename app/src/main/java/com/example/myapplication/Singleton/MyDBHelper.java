@@ -38,7 +38,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL(statement);
 
-        statement = "CREATE TABLE IF NOT EXISTS SCORES (ID INTEGER PRIMARY KEY AUTOINCREMENT, GAME TEXT, SCORE DOUBLE, DATE TEXT)";
+        statement = "CREATE TABLE IF NOT EXISTS SCORES (ID INTEGER PRIMARY KEY AUTOINCREMENT, GAME TEXT, SCORE DOUBLE, DATE REAL)";
 
         sqLiteDatabase.execSQL(statement);
     }
@@ -156,5 +156,17 @@ public class MyDBHelper extends SQLiteOpenHelper {
         database.execSQL(statement);
     }
 
+    public double getRecentScore(String GAME_TYPE) {
+        SQLiteDatabase database = this.getReadableDatabase();
+        String query = "SELECT SCORE FROM SCORES WHERE GAME = '" + GAME_TYPE + "' ORDER BY DATE DESC LIMIT 1;";
+        Cursor cursor = database.rawQuery(query, null);
+        double score = 0;
+        if(cursor.moveToFirst()) {
+            score = cursor.getDouble(0);
+        } else { }
+        cursor.close();
+        database.close();
+        return score;
+    }
 
 }
