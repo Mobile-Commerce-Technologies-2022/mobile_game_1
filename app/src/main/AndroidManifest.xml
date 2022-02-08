@@ -36,6 +36,12 @@
 
         <activity android:name=".CountSheep.CountSheepActivity">
         </activity>
+
+        <activity android:name=".CountSheep.CountSheepReviewActivity">
+        </activity>
+
+        <activity android:name=".CountSheep.CountSheepScoreActivity">
+        </activity>
     </application>
 
 </manifest>
