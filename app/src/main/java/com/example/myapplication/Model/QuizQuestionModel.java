@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QuizQuestionModel implements Parcelable {
-    private String question;
-    private ArrayList<String> optionList;
-    private String answer;
+    private final String question;
+    private final ArrayList<String> optionList;
+    private final String answer;
 
     public QuizQuestionModel(String question, List<String> optionList, String answer) {
         this.question = question;

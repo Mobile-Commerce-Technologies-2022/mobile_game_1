@@ -11,18 +11,11 @@ import androidx.annotation.Nullable;
 
 import com.example.myapplication.Model.QuizQuestionModel;
 
-
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class MyDBHelper extends SQLiteOpenHelper {
-
-    private final String QUESTIONS_TABLE = "QUESTIONS_TABLE";
-    private final String QUESTION = "QUESTION";
-    private final String OPTION_LIST = "OPTION_LIST";
-    private final String ANSWER = "ANSWER";
 
     public MyDBHelper(@Nullable Context context) {
         super(context, "GAMES.db", null, 1);
@@ -31,6 +24,9 @@ public class MyDBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
+        String QUESTION = "QUESTION";
+        String OPTION_LIST = "OPTION_LIST";
+        String ANSWER = "ANSWER";
         String statement = "CREATE TABLE IF NOT EXISTS QUESTIONS (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 QUESTION + " TEXT, " +
                 OPTION_LIST + " TEXT, " +
@@ -59,11 +55,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
         long question_table = database.insert("QUESTIONS", null, contentValues);
 
         database.close();
-        if(question_table == -1) {
-            return false;
-        } else {
-            return true;
-        }
+        return question_table != -1;
     }
 
     public List<QuizQuestionModel> getQuizQuestionModels() {
@@ -89,8 +81,6 @@ public class MyDBHelper extends SQLiteOpenHelper {
                 list.add(quizQuestionModel);
 
             } while(cursor.moveToNext());
-        } else {
-
         }
         cursor.close();
         database.close();
@@ -109,11 +99,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
         long question_table = database.insert("SCORES", null, contentValues);
 
         database.close();
-        if(question_table == -1) {
-            return false;
-        } else {
-            return true;
-        }
+        return question_table != -1;
     }
 
     public void loadData() {
@@ -163,7 +149,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
         double score = 0;
         if(cursor.moveToFirst()) {
             score = cursor.getDouble(0);
-        } else { }
+        }
         cursor.close();
         database.close();
         return score;

@@ -28,14 +28,10 @@ public class QuizGameMenuActivity extends AppCompatActivity {
         }
 
         Button btnAddQuestion = findViewById(R.id.btnAddQuestion);
-        btnAddQuestion.setOnClickListener((View view) -> {
-            MyHelper.getInstance().go2Activity(this, AddQuestionActivity.class);
-        });
+        btnAddQuestion.setOnClickListener((View view) -> MyHelper.getInstance().go2Activity(this, AddQuestionActivity.class));
 
         Button btnStartQuiz = findViewById(R.id.btnStartQuiz);
-        btnStartQuiz.setOnClickListener((View view) -> {
-            MyHelper.getInstance().go2Activity(this, QuizGameActivity.class);
-        });
+        btnStartQuiz.setOnClickListener((View view) -> MyHelper.getInstance().go2Activity(this, QuizGameActivity.class));
     }
 
 }

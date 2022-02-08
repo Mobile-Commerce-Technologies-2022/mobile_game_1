@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -60,7 +59,7 @@ public class AnswerRevealActivity extends AppCompatActivity {
                 showCorrectAnswer(pos, score, rbList_);
             } else if(pos.get() == NUM_QUESTION) {
                 MyDBHelper myDBHelper = new MyDBHelper(AnswerRevealActivity.this);
-                double score_ = 100 * score.get() / NUM_QUESTION;
+                double score_ = 100d * score.get() / NUM_QUESTION;
                 myDBHelper.addScore(score_, "QUIZ");
                 MyHelper.getInstance().go2Activity(this, GameMenuActivity.class);
             }

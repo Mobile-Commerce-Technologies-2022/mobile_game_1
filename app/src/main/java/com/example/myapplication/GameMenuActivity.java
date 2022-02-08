@@ -1,8 +1,6 @@
 package com.example.myapplication;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -37,9 +35,7 @@ public class GameMenuActivity extends AppCompatActivity {
         });
 
         Button btnBack2Welcome = findViewById(R.id.btnBack2Welcome);
-        btnBack2Welcome.setOnClickListener(view -> {
-            MyHelper.getInstance().go2Activity(this, MainActivity.class);
-        });
+        btnBack2Welcome.setOnClickListener(view -> MyHelper.getInstance().go2Activity(this, MainActivity.class));
     }
 
 }

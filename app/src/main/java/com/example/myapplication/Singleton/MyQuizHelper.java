@@ -40,8 +40,8 @@ public class MyQuizHelper {
      * Update Quiz Question elements with corresponding element in questionList
      * @param view Activity
      * @param pos Index of a question in questionList
-     * @param questionList Contrainer for QuizQuestion Object
-     * @param COLORS
+     * @param questionList Container for QuizQuestion Object
+     * @param COLORS Color palette array
      */
     public void setQuestion(AppCompatActivity view, int pos, List<QuizQuestionModel> questionList, int[] COLORS) {
         List<String> optionList = questionList.get(pos).getOptionList();
@@ -80,10 +80,6 @@ public class MyQuizHelper {
     }
 
 
-    /**
-     * TODO: use AWS database to fetch questions
-     * @return
-     */
     public List<QuizQuestionModel> loadQuestions(AppCompatActivity view) {
         MyDBHelper myDBHelper = new MyDBHelper(view);
         return myDBHelper.getQuizQuestionModels();
