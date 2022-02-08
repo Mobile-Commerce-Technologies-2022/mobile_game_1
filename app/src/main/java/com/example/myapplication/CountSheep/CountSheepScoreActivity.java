@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.GameMenuActivity;
 import com.example.myapplication.R;
+import com.example.myapplication.Singleton.MyDBHelper;
 import com.example.myapplication.Singleton.MyHelper;
 
 
@@ -24,10 +25,12 @@ public class CountSheepScoreActivity extends AppCompatActivity {
         double score = bundle.getDouble("COUNTING_SCORE");
 
         TextView textViewScore = findViewById(R.id.textViewScore);
-        textViewScore.setText("Score: " + score);
+        textViewScore.setText("Score: " + score*100);
 
         Button btnSubmit = findViewById(R.id.btnSubmit);
         btnSubmit.setOnClickListener(view -> {
+            MyDBHelper myDBHelper = new MyDBHelper(CountSheepScoreActivity.this);
+            myDBHelper.addScore(score*100, "COUNT");
             MyHelper.getInstance().go2Activity(this, GameMenuActivity.class);
         });
     }

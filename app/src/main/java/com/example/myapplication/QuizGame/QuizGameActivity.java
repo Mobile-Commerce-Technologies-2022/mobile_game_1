@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapplication.Model.QuizQuestion;
+import com.example.myapplication.Model.QuizQuestionModel;
 import com.example.myapplication.R;
 import com.example.myapplication.Singleton.MyHelper;
 import com.example.myapplication.Singleton.MyQuizHelper;
@@ -24,7 +24,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class QuizGameActivity extends AppCompatActivity {
 
-    private List<QuizQuestion> questionList = null;
+    private List<QuizQuestionModel> questionList = null;
     private List<String> userAnswers = null;
     final int[] COLORS = new int[]{Color.BLUE, Color.GREEN, Color.YELLOW, Color.GRAY, Color.MAGENTA, Color.DKGRAY};
     final int NUM_QUESTION = 5;

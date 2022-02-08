@@ -3,16 +3,15 @@ package com.example.myapplication.Model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QuizQuestion implements Parcelable {
+public class QuizQuestionModel implements Parcelable {
     private String question;
     private ArrayList<String> optionList;
     private String answer;
 
-    public QuizQuestion(String question, List<String> optionList, String answer) {
+    public QuizQuestionModel(String question, List<String> optionList, String answer) {
         this.question = question;
         this.optionList = (ArrayList<String>) optionList;
         this.answer = answer;
@@ -43,19 +42,19 @@ public class QuizQuestion implements Parcelable {
         parcel.writeString(this.answer);
     }
 
-    public QuizQuestion(Parcel parcel) {
+    public QuizQuestionModel(Parcel parcel) {
         this.question = parcel.readString();
-        this.optionList = (ArrayList<String>) parcel.readArrayList(QuizQuestion.class.getClassLoader());
+        this.optionList = (ArrayList<String>) parcel.readArrayList(QuizQuestionModel.class.getClassLoader());
         this.answer = parcel.readString();
     }
 
-    public static final Parcelable.Creator<QuizQuestion> CREATOR = new Parcelable.Creator<QuizQuestion>() {
-        public QuizQuestion createFromParcel(Parcel in) {
-            return new QuizQuestion(in);
+    public static final Parcelable.Creator<QuizQuestionModel> CREATOR = new Parcelable.Creator<QuizQuestionModel>() {
+        public QuizQuestionModel createFromParcel(Parcel in) {
+            return new QuizQuestionModel(in);
         }
 
-        public QuizQuestion[] newArray(int size) {
-            return new QuizQuestion[size];
+        public QuizQuestionModel[] newArray(int size) {
+            return new QuizQuestionModel[size];
         }
     };
 
