@@ -1,25 +1,32 @@
 package com.example.myapplication.CountSheep;
 
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 
 import com.example.myapplication.R;
+import com.example.myapplication.Singleton.MyHelper;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class CountSheepActivity extends AppCompatActivity {
 
+    private static volatile List<Integer> imageList = new ArrayList<>();;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,19 +40,16 @@ public class CountSheepActivity extends AppCompatActivity {
 
         final ConstraintLayout constraintLayout = findViewById(R.id.container);
 
+        final int NUM_IMAGE_VIEWS = 70;
+        for(int i = 0; i < NUM_IMAGE_VIEWS; i++) {
+            imageList.add(R.drawable.sheep);
+        }
+
         Button test = findViewById(R.id.btnStartCounting);
         test.setOnClickListener(view -> {
             this.removeView(view); // remove button
 
-            List<Integer> imageList = new ArrayList<>();
-            final int NUM_IMAGE_VIEWS = 5;
-                    //(int) Math.random() * 60;
-            for(int i = 0; i < NUM_IMAGE_VIEWS; i++) {
-                imageList.add(R.drawable.sheep);
-            }
-
-            handleSheep(imageList, width, height, constraintLayout);
-
+            handleSheep(imageList, width, height, constraintLayout, this);
 
         });
     }
@@ -55,13 +59,14 @@ public class CountSheepActivity extends AppCompatActivity {
         vg.removeView(view);
     }
 
-    private void handleSheep(List<Integer> imageList, int width, int height, ConstraintLayout constraintLayout) {
-        final Handler imageViewHandler = new Handler();
+    private void handleSheep(List<Integer> imageList, int width, int height, ConstraintLayout constraintLayout, Context context) {
+        final Handler handler = new Handler();
+        AtomicInteger timeCountDown = new AtomicInteger(60 * 1000); // 60 second
         // add imageview to the layout in random place with a delay between 1s and 3s
         Runnable runnable = new Runnable() {
-            int i = 0;
+            int i = 0; // counter of current imageView position
             public void run() {
-                if(i < imageList.size()) {
+                if(i < imageList.size() && timeCountDown.get() > 0) {
                     //create a new ImageView object
                     ImageView imageView = new ImageView(getApplicationContext());
                     imageView.setImageResource(imageList.get(i));
@@ -69,15 +74,26 @@ public class CountSheepActivity extends AppCompatActivity {
 
                     addSheep(width, height, imageView, constraintLayout);
                     int delay = (int)(Math.random()*2000) + 1000;
-                    i++;
-                    imageViewHandler.postDelayed(this, delay);  //for interval...
+                    handler.postDelayed(this, delay);
 
-                    imageViewHandler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            removeView(imageView);
-                        }
-                    }, delay);
+                    handler.postDelayed(() -> {
+                        removeView(imageView);
+                        timeCountDown.set(timeCountDown.get() - delay);
+                        String msg = "Total:[" + imageList.size() + "], Pos:["+i+"], Time left:["+timeCountDown.get()+"]";
+                        Log.i("Time Left", msg);
+                        }, delay);
+                    i++;
+
+                } else {
+                    if(timeCountDown.get() < 0) {
+                        i--;
+                        Log.i("Time", String.valueOf(i));
+                    }
+                    Intent intent = new Intent(context, CountSheepReviewActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("NUM_SHEEPS", i);
+                    intent.putExtras(bundle);
+                    MyHelper.getInstance().go2Activity(context, intent);
                 }
             }
 
@@ -110,10 +126,8 @@ public class CountSheepActivity extends AppCompatActivity {
                 vg.removeView(view);
             }
         };
-        imageViewHandler.postDelayed(runnable, 200); //for initial delay..
+
+        handler.postDelayed(runnable, 0); //for initial delay..
     }
 
-    private void handleClock() {
-
-    }
 }
