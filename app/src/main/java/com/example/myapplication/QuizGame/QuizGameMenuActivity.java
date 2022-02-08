@@ -6,6 +6,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.GameMenuActivity;
 import com.example.myapplication.Model.QuizQuestionModel;
 import com.example.myapplication.Singleton.MyDBHelper;
 import com.example.myapplication.Singleton.MyHelper;
@@ -32,6 +33,9 @@ public class QuizGameMenuActivity extends AppCompatActivity {
 
         Button btnStartQuiz = findViewById(R.id.btnStartQuiz);
         btnStartQuiz.setOnClickListener((View view) -> MyHelper.getInstance().go2Activity(this, QuizGameActivity.class));
+
+        Button btnBack2Menu = findViewById(R.id.btnBack2Menu);
+        btnBack2Menu.setOnClickListener(view -> MyHelper.getInstance().go2Activity(this, GameMenuActivity.class));
     }
 
 }

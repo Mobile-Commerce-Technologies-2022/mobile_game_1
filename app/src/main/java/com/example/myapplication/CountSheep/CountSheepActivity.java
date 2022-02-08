@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 
+import com.example.myapplication.GameMenuActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.Singleton.MyHelper;
 
@@ -44,13 +45,15 @@ public class CountSheepActivity extends AppCompatActivity {
             imageList.add(R.drawable.sheep);
         }
 
-        Button test = findViewById(R.id.btnStartCounting);
-        test.setOnClickListener(view -> {
+        Button btnStart = findViewById(R.id.btnStartCounting);
+        btnStart.setOnClickListener(view -> {
             this.removeView(view); // remove button
 
             handleSheep(imageList, width, height, constraintLayout, this);
-
         });
+
+        Button btnBack2Menu = findViewById(R.id.btnBack2Menu);
+        btnBack2Menu.setOnClickListener(view -> MyHelper.getInstance().go2Activity(this, GameMenuActivity.class));
     }
 
     private void removeView(View view) {
