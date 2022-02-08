@@ -9,7 +9,7 @@
     <string name="btn_quizGame">Quiz Game</string>
     <string name="btn_countSheep">Counting Game</string>
     <string name="btn_showScore">Show Score</string>
-
+    <string name="btn_back2Welcome">Back to Welcome</string>
 <!--    String values for Quiz Game-->
     <string name="title_quiz">Quiz Game</string>
     <string name="quizGameDescription">You will be given 5 multiple choice questions</string>
