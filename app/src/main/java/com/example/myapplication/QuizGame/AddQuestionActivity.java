@@ -41,6 +41,9 @@ public class AddQuestionActivity extends AppCompatActivity {
 
             if(!optionList.contains(answer)) {
                 Toast.makeText(this, "Your answer must be identical to the option", Toast.LENGTH_SHORT).show();
+            }else if(optionA.isEmpty() || optionB.isEmpty() || optionC.isEmpty() || optionD.isEmpty()
+            || answer.isEmpty() || question.isEmpty()) { // prevent empty elements
+                Toast.makeText(this, "Your question components cannot be empty", Toast.LENGTH_SHORT).show();
             } else {
                 QuizQuestionModel quizQuestionModel = new QuizQuestionModel(question, optionList, answer);
                 MyDBHelper myDBHelper = new MyDBHelper(AddQuestionActivity.this);
