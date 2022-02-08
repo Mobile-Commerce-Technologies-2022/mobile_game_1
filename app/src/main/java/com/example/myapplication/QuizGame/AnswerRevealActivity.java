@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.GameMenuActivity;
 import com.example.myapplication.Model.QuizQuestionModel;
 import com.example.myapplication.R;
+import com.example.myapplication.Singleton.MyDBHelper;
 import com.example.myapplication.Singleton.MyHelper;
 import com.example.myapplication.Singleton.MyQuizHelper;
 
@@ -57,8 +58,10 @@ public class AnswerRevealActivity extends AppCompatActivity {
                                                             this.COLORS);
                 ArrayList<RadioButton> rbList_ = (ArrayList<RadioButton>) MyQuizHelper.getInstance().getRadioButtonsByGroup(options);
                 showCorrectAnswer(pos, score, rbList_);
-            } else if(pos.get() == NUM_QUESTION) { // TODO: store the score in database
-                Toast.makeText(this, "Final Score: " + score + "/5", Toast.LENGTH_SHORT).show();
+            } else if(pos.get() == NUM_QUESTION) {
+                MyDBHelper myDBHelper = new MyDBHelper(AnswerRevealActivity.this);
+                double score_ = 100 * score.get() / NUM_QUESTION;
+                myDBHelper.addScore(score_, "QUIZ");
                 MyHelper.getInstance().go2Activity(this, GameMenuActivity.class);
             }
         }));
@@ -75,7 +78,6 @@ public class AnswerRevealActivity extends AppCompatActivity {
 
         if(!answer.equals(userAnswer)) {
             // highlight answer as green
-            score.getAndIncrement();
             for(RadioButton rb : rbList) {
                 String rbText = (String) rb.getText();
                 if(rbText.equals(userAnswer)) {
@@ -86,6 +88,7 @@ public class AnswerRevealActivity extends AppCompatActivity {
             }
         } else {
             //highlight user answer as red, correct answer as green
+            score.set(score.get() + 1);
             for(RadioButton rb : rbList) {
                 String rbText = (String) rb.getText();
                 if(rbText.equals(userAnswer)) {

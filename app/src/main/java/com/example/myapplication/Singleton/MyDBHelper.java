@@ -11,9 +11,10 @@ import androidx.annotation.Nullable;
 
 import com.example.myapplication.Model.QuizQuestionModel;
 
-import org.json.JSONArray;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class MyDBHelper extends SQLiteOpenHelper {
@@ -24,7 +25,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
     private final String ANSWER = "ANSWER";
 
     public MyDBHelper(@Nullable Context context) {
-        super(context, "games.db", null, 1);
+        super(context, "GAMES.db", null, 1);
     }
 
     @Override
@@ -36,6 +37,10 @@ public class MyDBHelper extends SQLiteOpenHelper {
                 ANSWER + " TEXT)";
 
         sqLiteDatabase.execSQL(statement);
+
+        statement = "CREATE TABLE IF NOT EXISTS SCORES (ID INTEGER PRIMARY KEY AUTOINCREMENT, GAME TEXT, SCORE DOUBLE, DATE TEXT)";
+
+        sqLiteDatabase.execSQL(statement);
     }
 
     @Override
@@ -43,7 +48,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
 
     }
 
-    public boolean add(QuizQuestionModel quizQuestionModel) {
+    public boolean addQuizQuestion(QuizQuestionModel quizQuestionModel) {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
@@ -90,6 +95,25 @@ public class MyDBHelper extends SQLiteOpenHelper {
         cursor.close();
         database.close();
         return list;
+    }
+
+    public boolean addScore(double score, String GAME_TYPE) {
+        SQLiteDatabase database = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        contentValues.put("GAME", GAME_TYPE);
+        contentValues.put("SCORE", score);
+        contentValues.put("DATE", timestamp.getTime());
+
+        long question_table = database.insert("SCORES", null, contentValues);
+
+        database.close();
+        if(question_table == -1) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     public void loadData() {
