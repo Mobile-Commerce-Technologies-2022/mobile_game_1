@@ -76,7 +76,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
                 String[] options = optionList.split(",");
                 List<String> optionList_ = new ArrayList<>();
                 for(String option : options) {
-                    option = option.replace("[", "").replace("]","");
+                    option = option.replace("[", "").replace("]","").trim();
                     Log.i("option", option);
                     optionList_.add(option);
                 }
