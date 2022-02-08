@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import com.example.myapplication.Model.QuizQuestion;
+import com.example.myapplication.Model.QuizQuestionModel;
 import com.example.myapplication.R;
 
 import java.util.ArrayList;
@@ -43,7 +43,7 @@ public class MyQuizHelper {
      * @param questionList Contrainer for QuizQuestion Object
      * @param COLORS
      */
-    public void setQuestion(AppCompatActivity view, int pos, List<QuizQuestion> questionList, int[] COLORS) {
+    public void setQuestion(AppCompatActivity view, int pos, List<QuizQuestionModel> questionList, int[] COLORS) {
         List<String> optionList = questionList.get(pos).getOptionList();
         String question = questionList.get(pos).getQuestion();
         // receive quiz game components by id
@@ -84,10 +84,10 @@ public class MyQuizHelper {
      * TODO: use AWS database to fetch questions
      * @return
      */
-    public List<QuizQuestion> loadQuestions(AppCompatActivity view) {
-        List<QuizQuestion> questionList = new ArrayList<>();
+    public List<QuizQuestionModel> loadQuestions(AppCompatActivity view) {
+        List<QuizQuestionModel> questionList = new ArrayList<>();
         String[] q1 = view.getResources().getStringArray(R.array.q1);
-        questionList.add(new QuizQuestion(q1[0],
+        questionList.add(new QuizQuestionModel(q1[0],
                 new ArrayList<String>(){
                     {
                         add(q1[1]);
@@ -98,7 +98,7 @@ public class MyQuizHelper {
                 }, q1[5]));
 
         String[] q2 = view.getResources().getStringArray(R.array.q2);
-        questionList.add(new QuizQuestion(q2[0],
+        questionList.add(new QuizQuestionModel(q2[0],
                 new ArrayList<String>(){
                     {
                         add(q2[1]);
@@ -109,7 +109,7 @@ public class MyQuizHelper {
                 }, q2[5]));
 
         String[] q3 = view.getResources().getStringArray(R.array.q3);
-        questionList.add(new QuizQuestion(q3[0],
+        questionList.add(new QuizQuestionModel(q3[0],
                 new ArrayList<String>(){
                     {
                         add(q3[1]);
@@ -120,7 +120,7 @@ public class MyQuizHelper {
                 }, q3[5]));
 
         String[] q4 = view.getResources().getStringArray(R.array.q4);
-        questionList.add(new QuizQuestion(q4[0],
+        questionList.add(new QuizQuestionModel(q4[0],
                 new ArrayList<String>(){
                     {
                         add(q4[1]);
@@ -131,7 +131,7 @@ public class MyQuizHelper {
                 }, q4[5]));
 
         String[] q5 = view.getResources().getStringArray(R.array.q5);
-        questionList.add(new QuizQuestion(q5[0],
+        questionList.add(new QuizQuestionModel(q5[0],
                 new ArrayList<String>(){
                     {
                         add(q5[1]);
@@ -142,7 +142,7 @@ public class MyQuizHelper {
                 }, q5[5]));
 
         String[] q6 = view.getResources().getStringArray(R.array.q6);
-        questionList.add(new QuizQuestion(q6[0],
+        questionList.add(new QuizQuestionModel(q6[0],
                 new ArrayList<String>(){
                     {
                         add(q6[1]);
@@ -153,7 +153,7 @@ public class MyQuizHelper {
                 }, q6[5]));
 
         String[] q7 = view.getResources().getStringArray(R.array.q7);
-        questionList.add(new QuizQuestion(q7[0],
+        questionList.add(new QuizQuestionModel(q7[0],
                 new ArrayList<String>(){
                     {
                         add(q7[1]);
