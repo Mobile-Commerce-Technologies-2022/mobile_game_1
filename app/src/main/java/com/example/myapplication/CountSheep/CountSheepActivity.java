@@ -44,57 +44,76 @@ public class CountSheepActivity extends AppCompatActivity {
                 imageList.add(R.drawable.sheep);
             }
 
-            final Handler handler = new Handler();
-            // add imageview to the layout in random place with a delay between 1s and 3s
-            Runnable runnable = new Runnable() {
-                int i=0;
-                public void run() {
-                    if(i < imageList.size()) {
-                        addSheep(width, height, imageList.get(i), constraintLayout);
-                        int delay = (int)(Math.random()*2000) + 1000;
-                        i++;
-                        handler.postDelayed(this, delay);  //for interval...
-                    }
-                }
+            handleSheep(imageList, width, height, constraintLayout);
 
-                private void addSheep(int width, int height, int imageId, ConstraintLayout constraintLayout) {
-                    int x = (int)(Math.random() * width);
-                    int y = (int)(Math.random() * height);
-                    float horizontalBias = (float) (Math.random());
-                    float verticalBias = (float) (Math.random());
-                    // equivalent to android:layout_width and android:layout_height
-                    ConstraintLayout.LayoutParams params = new ConstraintLayout.LayoutParams(x, y);
-                    //create a new ImageView object
-                    ImageView imageView = new ImageView(getApplicationContext());
-                    imageView.setImageResource(imageId);
-                    // Add layout parameters to ImageView
-                    imageView.setLayoutParams(params);
-                    imageView.setId(View.generateViewId());
-                    // set constrain parameters to the view image
-                    ConstraintSet constraintSet = new ConstraintSet();
-                    constraintSet.clone(constraintLayout);
-                    // equivalent to app:layout_constraintBottom_toBottomOf="parent"
-                    constraintSet.connect(imageView.getId(), ConstraintSet.LEFT, constraintLayout.getId(), ConstraintSet.LEFT, 0);
-                    constraintSet.connect(imageView.getId(), ConstraintSet.RIGHT, constraintLayout.getId(), ConstraintSet.RIGHT, 0);
-                    constraintSet.connect(imageView.getId(), ConstraintSet.TOP, constraintLayout.getId(), ConstraintSet.TOP, 0);
-                    constraintSet.connect(imageView.getId(), ConstraintSet.BOTTOM, constraintLayout.getId(), ConstraintSet.BOTTOM, 0);
-                    // equivalent to app:layout_constraintVertical_bias
-                    constraintSet.setVerticalBias(imageView.getId(), horizontalBias);
-                    constraintSet.setHorizontalBias(imageView.getId(), verticalBias);
-                    // apply the constraints to the layout
-                    constraintSet.applyTo(constraintLayout);
-                    // Finally, add the ImageView to layout
-                    constraintLayout.addView(imageView);
-                }
 
-            };
-            handler.postDelayed(runnable, 200); //for initial delay..
         });
     }
-
 
     private void removeView(View view) {
         ViewGroup vg = (ViewGroup) view.getParent();
         vg.removeView(view);
+    }
+
+    private void handleSheep(List<Integer> imageList, int width, int height, ConstraintLayout constraintLayout) {
+        final Handler imageViewHandler = new Handler();
+        // add imageview to the layout in random place with a delay between 1s and 3s
+        Runnable runnable = new Runnable() {
+            int i = 0;
+            public void run() {
+                if(i < imageList.size()) {
+                    //create a new ImageView object
+                    ImageView imageView = new ImageView(getApplicationContext());
+                    imageView.setImageResource(imageList.get(i));
+                    imageView.setId(View.generateViewId());
+
+                    addSheep(width, height, imageView, constraintLayout);
+                    int delay = (int)(Math.random()*2000) + 1000;
+                    i++;
+                    imageViewHandler.postDelayed(this, delay);  //for interval...
+
+                    imageViewHandler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            removeView(imageView);
+                        }
+                    }, delay);
+                }
+            }
+
+            private void addSheep(int width, int height, ImageView imageView, ConstraintLayout constraintLayout) {
+                // equivalent to android:layout_width and android:layout_height
+                ConstraintLayout.LayoutParams params = new ConstraintLayout.LayoutParams((int)(Math.random() * width),
+                        (int)(Math.random() * height));
+
+                // Add layout parameters to ImageView
+                imageView.setLayoutParams(params);
+                // set constrain parameters to the view image
+                ConstraintSet constraintSet = new ConstraintSet();
+                constraintSet.clone(constraintLayout);
+                // equivalent to app:layout_constraintBottom_toBottomOf="parent"
+                constraintSet.connect(imageView.getId(), ConstraintSet.LEFT, constraintLayout.getId(), ConstraintSet.LEFT, 0);
+                constraintSet.connect(imageView.getId(), ConstraintSet.RIGHT, constraintLayout.getId(), ConstraintSet.RIGHT, 0);
+                constraintSet.connect(imageView.getId(), ConstraintSet.TOP, constraintLayout.getId(), ConstraintSet.TOP, 0);
+                constraintSet.connect(imageView.getId(), ConstraintSet.BOTTOM, constraintLayout.getId(), ConstraintSet.BOTTOM, 0);
+                // equivalent to app:layout_constraintVertical_bias
+                constraintSet.setVerticalBias(imageView.getId(), (float) (Math.random()));
+                constraintSet.setHorizontalBias(imageView.getId(), (float) (Math.random()));
+                // apply the constraints to the layout
+                constraintSet.applyTo(constraintLayout);
+                // Finally, add the ImageView to layout
+                constraintLayout.addView(imageView);
+            }
+
+            private void removeView(View view) {
+                ViewGroup vg = (ViewGroup) view.getParent();
+                vg.removeView(view);
+            }
+        };
+        imageViewHandler.postDelayed(runnable, 200); //for initial delay..
+    }
+
+    private void handleClock() {
+
     }
 }
