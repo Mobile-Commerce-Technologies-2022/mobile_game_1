@@ -26,7 +26,11 @@ public class QuizGameActivity extends AppCompatActivity {
 
     private List<QuizQuestionModel> questionList = null;
     private List<String> userAnswers = null;
-    final int[] COLORS = new int[]{Color.BLUE, Color.GREEN, Color.YELLOW, Color.GRAY, Color.MAGENTA, Color.DKGRAY};
+    final int[] COLORS = new int[]{Color.rgb(4, 28, 50),
+            Color.rgb(4, 41, 58),
+            Color.rgb(6, 70, 99),
+            Color.rgb(44, 57, 75),
+            Color.rgb(51, 71, 86)};
     final int NUM_QUESTION = 5;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

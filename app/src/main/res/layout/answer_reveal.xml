@@ -23,6 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:text="A"
+            android:textColor="@color/black"
             android:enabled="false"/>
 
         <RadioButton
@@ -30,6 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:text="B"
+            android:textColor="@color/black"
             android:enabled="false"/>
 
         <RadioButton
@@ -37,6 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:text="C"
+            android:textColor="@color/black"
             android:enabled="false"/>
 
         <RadioButton
@@ -44,6 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="42dp"
             android:text="D"
+            android:textColor="@color/black"
             android:enabled="false"/>
     </RadioGroup>
 
