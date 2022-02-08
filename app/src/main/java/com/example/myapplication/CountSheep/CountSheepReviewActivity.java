@@ -4,11 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapplication.GameMenuActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.Singleton.MyHelper;
 
@@ -21,7 +19,7 @@ public class CountSheepReviewActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        int numSheeps = bundle.getInt("NUM_SHEEPS");
+        int numSheep = bundle.getInt("NUM_SHEEP");
 
         EditText editText = findViewById(R.id.etUserSheep);
         Button btnSubmit = findViewById(R.id.btnSubmit);
@@ -30,7 +28,7 @@ public class CountSheepReviewActivity extends AppCompatActivity {
             int userInput = Integer.parseInt(editText.getText().toString());
             Intent intent2 = new Intent(this, CountSheepScoreActivity.class);
             Bundle bundle2 = new Bundle();
-            double score = 1 - Math.abs((double)(numSheeps - userInput) / numSheeps );
+            double score = 1 - Math.abs((double)(numSheep - userInput) / numSheep );
             bundle2.putDouble("COUNTING_SCORE", score);
             intent2.putExtras(bundle2);
             MyHelper.getInstance().go2Activity(this, intent2);

@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -39,7 +38,7 @@ public class CountSheepActivity extends AppCompatActivity {
 
         final ConstraintLayout constraintLayout = findViewById(R.id.container);
 
-        List<Integer> imageList = new ArrayList<>();;
+        List<Integer> imageList = new ArrayList<>();
         final int NUM_IMAGE_VIEWS = 70;
         for(int i = 0; i < NUM_IMAGE_VIEWS; i++) {
             imageList.add(R.drawable.sheep);
@@ -92,7 +91,7 @@ public class CountSheepActivity extends AppCompatActivity {
                     }
                     Intent intent = new Intent(context, CountSheepReviewActivity.class);
                     Bundle bundle = new Bundle();
-                    bundle.putInt("NUM_SHEEPS", i);
+                    bundle.putInt("NUM_SHEEP", i);
                     intent.putExtras(bundle);
                     MyHelper.getInstance().go2Activity(context, intent);
                 }
