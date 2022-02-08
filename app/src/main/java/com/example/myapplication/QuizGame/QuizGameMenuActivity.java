@@ -20,6 +20,13 @@ public class QuizGameMenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.quiz_game_menu);
 
+        // load pre-designed questions
+        MyDBHelper myDBHelper = new MyDBHelper(QuizGameMenuActivity.this);
+        List<QuizQuestionModel> list = myDBHelper.getQuizQuestionModels();
+        if(list.size() == 0) {
+            myDBHelper.loadData();
+        }
+
         Button btnAddQuestion = findViewById(R.id.btnAddQuestion);
         btnAddQuestion.setOnClickListener((View view) -> {
             MyHelper.getInstance().go2Activity(this, AddQuestionActivity.class);
@@ -27,12 +34,6 @@ public class QuizGameMenuActivity extends AppCompatActivity {
 
         Button btnStartQuiz = findViewById(R.id.btnStartQuiz);
         btnStartQuiz.setOnClickListener((View view) -> {
-
-            MyDBHelper myDBHelper = new MyDBHelper(QuizGameMenuActivity.this);
-            List<QuizQuestionModel> list = myDBHelper.getQuizQuestionModels();
-            if(list.size() == 0) {
-                myDBHelper.loadData();
-            }
             MyHelper.getInstance().go2Activity(this, QuizGameActivity.class);
         });
     }
