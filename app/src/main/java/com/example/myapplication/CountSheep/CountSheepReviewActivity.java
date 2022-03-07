@@ -28,7 +28,7 @@ public class CountSheepReviewActivity extends AppCompatActivity {
             int userInput = Integer.parseInt(editText.getText().toString());
             Intent intent2 = new Intent(this, CountSheepScoreActivity.class);
             Bundle bundle2 = new Bundle();
-            double score = 1 - Math.abs((double)(numSheep - userInput) / numSheep );
+            double score = (double) numSheep / userInput;
             bundle2.putDouble("COUNTING_SCORE", score);
             intent2.putExtras(bundle2);
             MyHelper.getInstance().go2Activity(this, intent2);
